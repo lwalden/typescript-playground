@@ -1,0 +1,35 @@
+{
+  // TypeScript
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+
+  // Format on save for this workspace
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Inline completions — toggle with Ctrl+Shift+A (see keybindings below)
+  // Set to false here as the default for this workspace (distraction-free coding/interviews)
+  // Toggle on/off via: Ctrl+Shift+A
+  "github.copilot.editor.enableAutoCompletions": false,
+  "editor.inlineSuggest.enabled": false,
+
+  // Keep Intellisense (hover, go-to-def, completions popup) — that's separate from inline AI
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "off"
+  },
+
+  // Show errors inline
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+
+  // Explorer
+  "files.exclude": {
+    "node_modules": true,
+    ".git": true
+  },
+
+  // Run on save — optional, comment out if you prefer manual runs
+  // "emeraldwalk.runonsave": { ... }
+}

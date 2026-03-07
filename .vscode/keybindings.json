@@ -1,0 +1,18 @@
+// Workspace-scoped keybindings suggestion — copy relevant entries to your
+// global keybindings.json (File > Preferences > Keyboard Shortcuts > open JSON)
+// if you want them outside this workspace too.
+//
+// Note: VS Code doesn't support workspace-scoped keybindings natively.
+// These are documented here for reference. Apply globally via:
+//   Ctrl+Shift+P > "Open Keyboard Shortcuts (JSON)"
+//
+// --- Suggested bindings ---
+//
+// Run current file:       already Ctrl+Shift+B (default build task)
+// Debug current file:     F5
+//
+// Toggle Copilot inline completions on/off:
+// {
+//   "key": "ctrl+shift+a",
+//   "command": "github.copilot.toggleAutoCompletions"
+// }

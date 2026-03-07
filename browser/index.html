@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TS Playground</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #1e1e2e;
+      color: #cdd6f4;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+    h1 { color: #89b4fa; margin-bottom: 1rem; font-size: 1.2rem; font-weight: 600; }
+    #output {
+      background: #181825;
+      border: 1px solid #313244;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      font-family: 'Cascadia Code', 'Fira Code', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-all;
+      min-height: 200px;
+    }
+    .entry { margin-bottom: 0.25rem; }
+    .entry.log   { color: #cdd6f4; }
+    .entry.info  { color: #89dceb; }
+    .entry.warn  { color: #f9e2af; }
+    .entry.error { color: #f38ba8; }
+    .label { color: #6c7086; font-size: 12px; margin-bottom: 0.5rem; display: block; }
+  </style>
+</head>
+<body>
+  <h1>TypeScript Playground — Browser Output</h1>
+  <span class="label">Edit browser/main.ts → output appears below (hot reload enabled)</span>
+  <div id="output"></div>
+  <script type="module" src="./main.ts"></script>
+  <script>
+    // Intercept console methods and render output in the page
+    const out = document.getElementById('output');
+    const fmt = (...args) => args.map(a =>
+      typeof a === 'object' ? JSON.stringify(a, null, 2) : String(a)
+    ).join(' ');
+    ['log', 'info', 'warn', 'error'].forEach(level => {
+      const orig = console[level].bind(console);
+      console[level] = (...args) => {
+        orig(...args);
+        const el = document.createElement('div');
+        el.className = `entry ${level}`;
+        el.textContent = fmt(...args);
+        out.appendChild(el);
+      };
+    });
+  </script>
+</body>
+</html>
